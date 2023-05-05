@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone by Rahadyan</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins&display=swap');
+
+      * {
+          margin: 0;
+          padding: 0;
+          font-family: 'Poppins', 'sans-serif';
+          box-sizing: border-box;
+      }
+
+      body {
+          background: #000;
+          color: #fff;
+      }
+
+      .header {
+          width: 100%;
+          height: 100vh;
+          background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(https://user-images.githubusercontent.com/33485020/108069438-5ee79d80-7089-11eb-8264-08fdda7e0d11.jpg);
+          background-size: cover;
+          background-position: center;
+          padding: 10px 8%;
+          position: relative;
+      }
+
+      .netflix-logo {
+        width: 15%;
+        height: auto;
+        cursor: pointer;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+      }
+
+      nav > div > button {
+        border: 0;
+        outline: 0;
+        border-radius: 10px;
+        color: white;
+        background: red;
+        padding: 5px 20px;
+        font-size: 15px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      .lang-btn {
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        border: 1px solid white;
+        padding: 5px 15px;
+        color: white;
+      }
+
+      .lang-btn img {
+        width: 10px;
+        margin-left: 5px;
+      }
+
+      .header-content {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+        text-align: left;
+        margin-top: 100px;
+      }
+
+      /* .header-content > form > button {
+        border: 0;
+        outline: 0;
+        font-size: 15px;
+        margin-left: 10px;
+        padding: 5px 20px;
+        border-radius: 10px;
+        background: red;
+        color: white;
+      } */
+
+      .header-content h1 {
+        font-size: 50px;
+        line-height: 75px;
+        font-weight: 750;
+        max-width: 500px;
+      }
+
+      .header-content h3 {
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+
+      .email-register {
+        background: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        overflow: hidden;
+      }
+
+      .email-register input{
+        flex: auto;
+        border: 0;
+        outline: 0;
+        margin-left: 20px;
+        font-size: 15px;
+      }
+
+      .email-register button {
+        background: red;
+        border: 0;
+        outline: 0;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 15px 30px;
+      }
+
+      .main-features {
+        padding: 50px 10%;
+        font-size: 20px;
+      }
+
+      .row {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 50px 0;
+        justify-content: space-between;
+      }
+
+      .main-features h2 {
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .text-col {
+        flex-basis: 50%;
+        margin-bottom: 20px;
+      }
+
+      .img-col {
+        flex-basis: 50%;
+        margin-bottom: 20px;
+      }
+
+      .img-col img {
+        display: block;
+        width: 90%;
+        margin: auto;
+      }
+      
+      .faq {
+        padding: 10px 12%;
+        text-align: center;
+        font-size: 18px;
+      }
+
+      .faq h2 {
+        font-weight: 500;
+        font-size: 40px;
+      }
+
+      .accordion {
+        margin: 60px auto;
+        width: 100%;
+        max-width: 750px;
+      }
+
+      .accordion li {
+        list-style: none;
+        width: 100%;
+        padding: 5px;
+      }
+
+      .accordion li label {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 500;
+        background: #303030;
+        margin-bottom: 2px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      label::after {
+        content: "+";
+        font-size: 34px;
+        position: absolute;
+        right: 10px;
+        transition: transform 0.5s;
+      }
+
+      input[type=radio] {
+        display: none;
+      }
+
+      .accordion .content {
+        background: #303030;
+        text-align: left;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s, padding 0.5s;
+      }
+
+      .accordion input[type=radio]:checked + label + .content {
+        max-height: 600px;
+        padding: 30px 20px;
+      }
+
+      .accordion input[type=radio]:checked + label::after {
+        transform: rotate(135deg);
+      }
+
+      .faq .email-register {
+        max-width: 600px;
+        margin: 20px auto;
+      }
+
+    </style>
+</head>
+<body>
+<!-- BORDER -->
+<div class="header">
+  <nav class="header-navbar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="netflix" class="netflix-logo">
+    <div>
+      <button class="lang-btn">English <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Chevron-icon-drop-down-menu-WHITE.png" alt=""></button>
+      <button>Sign In</button>
+    </div>
+  </nav>
+
+  <div class="header-content">
+    <h1>Unlimited movies, TV shows and more</h1>
+    <h3>Watch anywhere. Cancel anytime</h3>
+    <p>Ready to watch? Enter your email to create or restart</p>
+    <form action="#" class="email-register">
+      <input type="email" placeholder="rahadyanrizqy@mail.net" required>
+      <button type="submit">Get Started</button>
+    </form>
+  </div>
+</div>
+
+<div class="main-features">
+  <div class="row">
+    <div class="text-col">
+      <h2>Enjoy on your TV.</h2>
+      <p>Watch on smart TVs, Playstation, Xbox, Chromecast, etc.</p>
+    </div>
+    <div class="img-col">
+      <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/cards/v2.1/enjoyOnTv/en.png" alt="">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="img-col">
+        <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/cards/v2.1/watchEverywhere/en.png" alt="">
+    </div>
+    <div class="text-col">
+      <h2>Watch everywhere.</h2>
+      <p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="text-col">
+      <h2>Create profiles for kids</h2>
+      <p>Send kids on adventures with their favorite characters in a space made just for them—free with your membership..</p>
+    </div>
+    <div class="img-col">
+      <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/cards/v2.1/kids/en.png" alt="">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="img-col">
+      <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/cards/v2.1/download/en.png" alt="">
+    </div>
+    <div class="text-col">
+      <h2>Download your shows to watch offline</h2>
+      <p>Save your favorites easily and always have something to watch.</p>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <ul class="accordion">
+    <li>
+      <input type="radio" name="accordion" id="first">
+      <label for="first">What is Netflix?</label>
+      <div class="content">
+        <p>
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+        </p>
+      </div>
+    </li>
+    <li>
+      <input type="radio" name="accordion" id="second">
+      <label for="second">How much does it cost?</label>
+      <div class="content">
+        <p>
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+        </p>
+      </div>
+    </li>
+    <li>
+      <input type="radio" name="accordion" id="third">
+      <label for="third">Where can i watch</label>
+      <div class="content">
+        <p>
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+        </p>
+      </div>
+    </li>
+    <li>
+      <input type="radio" name="accordion" id="fourth">
+      <label for="fourth">How do I cancel?</label>
+      <div class="content">
+        <p>
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+        </p>
+      </div>
+    </li>
+  </ul>
+  <small>Ready to start?</small>
+  <form action="#" class="email-register">
+    <input type="email" placeholder="rahadyanrizqy@mail.net" required>
+    <button type="submit">Get Started</button>
+  </form>
+</div>
+<!-- BORDER -->
+</body>
+</html>
